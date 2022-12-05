@@ -50,9 +50,13 @@ $("button").click((event) => {
 // gets saved array of inputs and displays them in appropriate textarea boxes
 function getStuff() {
   let savedNotes2 = JSON.parse(localStorage.getItem("savedNotes"));
-  savedData = savedNotes2;
+  if (savedNotes2 == null) {
+    return;
+  } else {
+    savedData = savedNotes2;
+  }
 
-  if (savedData[0] != null) {
+  if (savedData[0] !== null) {
     $("#9").val(savedData[0]);
   }
   if (savedData[1] != null) {
